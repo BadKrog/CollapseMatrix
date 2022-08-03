@@ -27,6 +27,10 @@ public class Group implements Cloneable{
         }
     }
 
+    public void addValue( int value){
+
+    }
+
     private Integer addGroup(Integer... values){
         List<Integer> valuesList = new ArrayList<Integer>();
         for(Integer curVal : values){

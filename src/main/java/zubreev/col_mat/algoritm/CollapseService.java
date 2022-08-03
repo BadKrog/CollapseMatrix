@@ -1,11 +1,9 @@
 package zubreev.col_mat.algoritm;
 
+import zubreev.col_mat.model.Cell;
 import zubreev.col_mat.model.DataForChange;
 import zubreev.col_mat.model.Group;
 import zubreev.col_mat.model.Matrix;
-
-import java.util.Arrays;
-import java.util.Map;
 
 public class CollapseService {
 
@@ -104,7 +102,7 @@ public class CollapseService {
         newMatrix = deployMatrixByRow(newMatrix);
 
         for(DataForChange data : arrData){
-            newMatrix.setValue(data);
+            newMatrix.setValue(data.getRow(), data.getColumn(), data.getCell());
         }
 
         newMatrix = collapsingMatrixByRow(newMatrix);

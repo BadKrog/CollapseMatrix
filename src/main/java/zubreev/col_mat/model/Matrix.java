@@ -3,38 +3,38 @@ package zubreev.col_mat.model;
 import java.util.*;
 
 public class Matrix {
-    private List<List<Short>> matrix = null;
+    private List<List<Cell>> matrix = null;
 
     private Group rowGroup = new Group();
     private Group columnGroup = new Group();
 
     public Matrix (){
-        matrix = new ArrayList<List<Short>>();
+        matrix = new ArrayList<List<Cell>>();
     }
 
-    public Matrix (short[][] matrix){
-        List<List<Short>> curMatrix = new ArrayList<>();
-        for(short[] row : matrix){
-            List<Short> curRow = new ArrayList<>();
-            for(short value : row){
-                curRow.add(value);
+    public Matrix (Cell[][] matrix){
+        List<List<Cell>> curMatrix = new ArrayList<>();
+        for(Cell[] row : matrix){
+            List<Cell> curRow = new ArrayList<>();
+            for(Cell cell : row){
+                curRow.add(cell);
             }
             curMatrix.add(curRow);
         }
         this.matrix = curMatrix;
     }
 
-    public Matrix (List<List<Short>> matrix){
+    public Matrix (List<List<Cell>> matrix){
         this.matrix = matrix;
     }
 
-    public void addRow( List<Short> row){
+    public void addRow( List<Cell> row){
         matrix.add(row);
     }
 
-    public void addColumn( List<Short> column){
+    public void addColumn( List<Cell> column){
         for(int i=0; i<column.size(); i++){
-            List<Short> curColumn;
+            List<Cell> curColumn;
             if(matrix.size()<=i) {
                 curColumn = new ArrayList<>();
                 matrix.add(curColumn);
@@ -45,11 +45,11 @@ public class Matrix {
         }
     }
 
-    public void setValue(DataForChange data){
-        matrix.get(data.getRow()).set(data.getColumn(), data.getValue());
+    public void setValue(int row, int column, Cell data){
+        matrix.get(row).set(column, data);
     }
 
-    public List<List<Short>> getMatrix() {
+    public List<List<Cell>> getMatrix() {
         return matrix;
     }
 
@@ -77,13 +77,13 @@ public class Matrix {
         return matrix.get(0).size();
     }
 
-    public List<Short> getRow( int row ){
+    public List<Cell> getRow( int row ){
         return matrix.get(row);
     }
 
-    public List<Short> getColumn( int column ){
-        List<Short> valColumns = new ArrayList<>();
-        for(List<Short> curRow : matrix){
+    public List<Cell> getColumn( int column ){
+        List<Cell> valColumns = new ArrayList<>();
+        for(List<Cell> curRow : matrix){
             valColumns.add(curRow.get(column));
         }
         return valColumns;
@@ -92,7 +92,7 @@ public class Matrix {
     @Override
     public String toString() {
         StringBuilder strMatrix = new StringBuilder("\n");
-        for(List<Short> row : matrix){
+        for(List<Cell> row : matrix){
             strMatrix.append(row+"\n");
         }
         return "Matrix{" +

@@ -1,20 +1,21 @@
 package zubreev.col_mat;
 
 import zubreev.col_mat.algoritm.CollapseService;
+import zubreev.col_mat.model.Cell;
 import zubreev.col_mat.model.DataForChange;
 import zubreev.col_mat.model.Matrix;
 
-import java.util.Arrays;
-
 public class App {
     public static void main(String[] args) {
-        short[][] inputMatrix = {{0, 1, 0, 1, 0, 1, 0},
-                                 {0, 1, 0, 1, 0, 1, 0},
-                                 {1, 1, 1, 1, 1, 1, 1},
-                                 {0, 0, 0, 0, 0, 0, 0},
-                                 {0, 1, 0, 1, 0, 1, 0},
-                                 {1, 1, 1, 1, 1, 1, 1},
-                                 {0, 0, 0, 1, 1, 1, 1}};
+        Cell[][] inputMatrix = {{new Cell(2, 2), new Cell(2, 2),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(1, 1), new Cell(1, 1),new Cell(1, 1),new Cell(1, 1),new Cell(1, 1)},
+                                {new Cell(2, 2), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 2), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 2), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 2), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 0), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 2), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)},
+                                {new Cell(2, 0), new Cell(3, 3),new Cell(2, 2),new Cell(2, 2),new Cell(2, 2)}};
 
         System.out.println("\n********* Test function matrix ***********\n");
         Matrix firstMatrix = new Matrix(inputMatrix);
@@ -49,12 +50,13 @@ public class App {
         System.out.println("\n********* Change value in matrix ***********\n");
 
         Matrix matrixWithOtherValue = CollapseService.changeValue(firstMatrix,
-                                                                  new DataForChange(0,0,1),
-                                                                  new DataForChange(1,1,1),
-                                                                  new DataForChange(2,2,1),
-                                                                  new DataForChange(0,1,1),
-                                                                  new DataForChange(2,1,1),
-                                                                  new DataForChange(0,2,1));
+                                                                  new DataForChange(0,0,new Cell(5,5)),
+                                                                  new DataForChange(1,0,new Cell(5,5)),
+                                                                  new DataForChange(2,0,new Cell(5,5)),
+                                                                  new DataForChange(2,1,new Cell(5,5)),
+                                                                  new DataForChange(3,2,new Cell(5,5)),
+                                                                  new DataForChange(3,3,new Cell(5,5)),
+                                                                  new DataForChange(3,4,new Cell(5,5)));
         System.out.println(matrixWithOtherValue);
 
         System.out.println("\n********* show all values in a matrix with modified data ***********\n");
